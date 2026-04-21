@@ -88,9 +88,11 @@
     // 5. Stergere cookie
     function deleteCookie() {
       const name = document.getElementById("deleteName").value;
+      document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=";
       document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
       alert("Cookie '" + name + "' a fost șters.");
     }
+ 
 
     // 6. Afisare toate cookies
     function showAllCookies() {
