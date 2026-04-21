@@ -12,6 +12,26 @@
 </head>
 <body>
   <h1>Bine ai venit la lab</h1>
+
+  <div style="background:#f0f8ff; border-left:4px solid #0066cc; padding:15px; margin:20px 0; border-radius:4px;">
+    <h2 style="margin-top:0;">Ce sunt Cookies?</h2>
+    <p>
+      <strong>Cookies</strong> sunt mici fișiere text stocate de browser pe calculatorul utilizatorului.
+      Serverul sau pagina web le poate citi la fiecare vizită ulterioară.
+    </p>
+    <p><strong>La ce sunt folosite:</strong></p>
+    <ul>
+      <li>Mentinerea sesiunii de autentificare (ești logat pe un site)</li>
+      <li>Retinerea preferintelor utilizatorului (limba, tema)</li>
+      <li>Urmarirea comportamentului pentru reclame (cookies de tracking)</li>
+      <li>Cosul de cumparaturi în magazine online</li>
+    </ul>
+    <p><strong>Reglementare GDPR:</strong> Conform regulamentului european, site-urile sunt obligate să
+    ceară consimțământul utilizatorului înainte de a seta cookies non-esențiale.</p>
+    <p><strong>În JavaScript</strong> cookies se gestionează prin <code>document.cookie</code> —
+    un string special prin care citești și scrii câte un cookie odată.</p>
+  </div>
+
   <button onclick="alertCookie()">Show cookies</button>
 
   <hr>
@@ -41,9 +61,9 @@
   <pre id="checkResult"></pre>
 
   <script>
-    // Cookie-urile din task 4
-    document.cookie = "session=test GDPR";
-    document.cookie = "favorite_task=collect Data";
+    // Cookie-urile din task 4 - cu path=/
+    document.cookie = "session=test GDPR; path=/";
+    document.cookie = "favorite_task=collect Data; path=/";
 
     // 1. Show cookies (task 4)
     function alertCookie() {
@@ -52,7 +72,7 @@
 
     // 2. Setare cookie simplu
     function setCookieSimple() {
-      document.cookie = "username=Darius";
+      document.cookie = "username=Darius; path=/";
       alert("Cookie setat: username=Darius");
     }
 
@@ -65,7 +85,7 @@
       alert("Cookie setat cu expirare in 7 zile: remember_me=true");
     }
 
-    // 4. Citire cookie dupa nume (functie MDN)
+    // 4. Citire cookie dupa nume
     function getCookie(name) {
       const nameEQ = name + "=";
       const cookies = document.cookie.split(';');
@@ -88,6 +108,7 @@
     // 5. Stergere cookie
     function deleteCookie() {
       const name = document.getElementById("deleteName").value;
+      document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=";
       document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
       alert("Cookie '" + name + "' a fost șters.");
     }
